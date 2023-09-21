@@ -1,12 +1,14 @@
 from random import randint
 from datetime import datetime as dt
-
+# changes for new branch
 
 def get_random_array(length, int_range):
     arr = []
     for k in range(0, length - 1):
         arr.append(randint(0, int_range))
     return arr
+
+
 def bubble_sort(array):
     """Функция сортировки пузырьковым методом."""
     start_time = dt.now()
@@ -18,6 +20,7 @@ def bubble_sort(array):
                 array[j] = temp
     print('Сортировка пузырьковым алгоритмом заняла', dt.now() - start_time)
     return array
+
 
 def select_sort(array):
     """Функция сортировки выбором."""
