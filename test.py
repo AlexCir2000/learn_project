@@ -1,7 +1,5 @@
 from random import randint
 from datetime import datetime as dt
-
-
 # changes for new branch
 
 def get_random_array(length, int_range):
