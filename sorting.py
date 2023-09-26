@@ -50,19 +50,43 @@ def python_sort(array):
     return array
 
 
-random_array_length = 3000
-random_array_range = 100000
+def quick_sort(array):
+    """Функция быстрой сортировки с рекурсией"""
+
+
+
+    if len(array) <= 1:
+        return array
+    else:
+        base_item = array[0]
+        arr_less = [i for i in array[1:] if i <= base_item]
+        arr_more = [i for i in array[1:] if i > base_item]
+    return quick_sort(arr_less) + [base_item] + quick_sort(arr_more)
+
+
+
+random_array_length = 200000
+random_array_range = 1000000000000
 print(F'Cоздается массив из {random_array_length} случайных чисел в диапазоне '
       F'от 0 до {random_array_range}')
 
 # Создание списка с произвольными значениями int
 random_array = get_random_array(random_array_length, random_array_range)
 
-bubble_sort(random_array.copy())
-# print(sorted_arr[:10], '.....', sorted_arr[-10:])
+if random_array_length <= 10000:
+    bubble_sort(random_array.copy())
+else:
+    print('Пузырьковым даже не буду заморачиаться сортировать')
 
-select_sort(random_array.copy())
-# print(sorted_arr[:10], '.....', sorted_arr[-10:])
+if random_array_length <= 20000:
+    select_sort(random_array.copy())
+else:
+    print('Сортровка выбором тоже очень долго')
 
 sorted_arr = python_sort(random_array.copy())
+
+start_time = dt.now()
+sorted_arr = quick_sort(random_array.copy())
+print('Сортировка quicksort заняла \t\t\t\t', dt.now() - start_time)
+
 print(sorted_arr[:10], '.....', sorted_arr[-10:])
